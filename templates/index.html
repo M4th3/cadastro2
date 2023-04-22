@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %} Clientes {% endblock %}
+{% block content %}
+<ul>{% for cliente in clientes %}
+    <li>{{ cliente }}, nome: {{ cliente.nome }}, idade: {{ cliente.idade }} anos, id:{{ cliente.id }}, cidade:{{cliente.cidade_residente.cidade}}</li>
+{% endfor %}</ul>
+<p> Cidade </p><ul>
+{% for cidade in cidades %}
+    <li>{{cidade}}, id:{{cidade.id}} estado:{{cidade.estado}}, cidade:{{cidade.cidade}},id_cliente residente: {{cidade.cliente_id}}</li>
+{% endfor %} </ul>   
+{% endblock %}

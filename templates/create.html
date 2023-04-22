@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Crie seu usuário{% endblock %}
+{% block content %}
+<form method="POST" action="/create">
+    {{ form.csrf_token }}
+    {{ form.nome.label }}{{ form.nome(size=20) }}
+    {{ form.idade.label}}{{ form.idade(size=20) }}
+    {{ form.estado.label}}{{ form.estado(size=20)}}
+    {{form.cidade.label }}{{ form.cidade(size=20)}}
+    <input type="Submit" value="Criar">
+</form>
+
+{% if form.nome.errors %}
+   <ul class="errors">
+    {% for error in form.nome.errors %}
+       <li>{{ error }}</li>
+    {% endfor %}
+   </ul>
+{% elif form.idade.errors %}
+   <ul class="errors">
+    {% for error in form.idade.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+   </ul>
+   {% endif %}
+{% endblock %} 

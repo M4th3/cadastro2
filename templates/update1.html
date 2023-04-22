@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Atualize seu cadastro{% endblock %}
+{% block content %}
+
+<form method="post" action="{{ url_for('update', id=id ) }}">
+    {{ form.csrf_token }}
+<p> {{ cliente }}</p>
+<p>{{ form.nome.label }}{{ form.nome(size=20)}}</p>
+<p>{{ form.idade.label }}{{ form.idade(size=20)}}</p>
+<p>{{form.cidade.label}}{{form.cidade(size=20)}}</p>
+<p>{{form.estado.label}}{{form.estado(size=20)}}</p>
+<p>id da cidade(dado inalterável):{{form.cidade_id}}</p>
+
+
+<input type="submit" value="Cadastrar">
+
+</form>
+
+{% if form.nome.errors %}
+   <ul class="errors">
+    {% for error in form.nome.errors %}
+       <li>{{ error }}</li>
+    {% endfor %}
+   </ul>
+{% elif form.idade.errors %}
+   <ul class="errors">
+    {% for error in form.idade.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+   </ul>
+   {% endif %}
+{% endblock %}
